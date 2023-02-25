@@ -1,8 +1,12 @@
 import RouteLink from "next/link";
-import { Grid, Container } from "@mui/material";
-import SingnUpForm from "@components/signupForm";
+import { useRouter } from "next/router";
+import { Grid } from "@mui/material";
+import SignupForm from "@components/signupForm";
+import LoginForm from "@components/LoginForm";
 
 export default function Login() {
+  const router = useRouter();
+
   return (
     <main>
       <Grid
@@ -18,7 +22,7 @@ export default function Login() {
             <span className="text-[#f7ee1c]">p</span>ace&nbsp;/&gt;
           </h1>
         </RouteLink>
-        <SingnUpForm />
+        {router?.query?.signup === "true" ? <SignupForm /> : <LoginForm />}
       </Grid>
     </main>
   );
